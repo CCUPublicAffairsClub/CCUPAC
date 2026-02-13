@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【活動回顧｜《獄惡同行》監獄主題營隊】 | 公共事務研習社</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .detail-container { max-width: 900px; margin: 0 auto; padding: 4rem 20px; }
+        .detail-hero { border-left: 8px solid #000; padding-left: 2rem; margin-bottom: 3rem; }
+        .detail-meta { font-family: monospace; color: #888; margin-bottom: 1rem; }
+        .detail-content { font-size: 1.1rem; line-height: 1.8; color: #333; text-align: justify; white-space: pre-wrap; }
+        .back-btn { display: inline-block; margin-top: 4rem; padding: 10px 20px; border: 1px solid #000; text-decoration: none; color: #000; font-weight: bold; transition: all 0.3s; }
+        .back-btn:hover { transform: translate(-4px, -4px); box-shadow: 4px 4px 0px #333; background: #000; color: #fff; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo-link">
+                <div class="logo-area">
+                    <img src="../images/logo_gold.png" alt="PA-CLUB Logo" class="header-logo">
+                    <h1>公共事務研習社</h1>
+                </div>
+            </a>
+            <nav>
+                <a href="../index.html">首頁</a>
+                <a href="../events.html">活動資訊</a>
+                <a href="../reviews.html">活動回顧</a>
+                <a href="../calendar.html">活動行事曆</a>
+                <a href="../index.html#about">關於我們</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="carousel-section" class="carousel-section">
+            <div class="carousel-container">
+                <div id="carousel-track" class="carousel-track">
+                    <div class="slide" style="background-image: url('../images/review_prison-2022_0.jpg')"></div>
+                    <div class="slide" style="background-image: url('../images/review_prison-2022_1.jpg')"></div>
+                    <div class="slide" style="background-image: url('../images/review_prison-2022_2.jpg')"></div>
+                    <div class="slide" style="background-image: url('../images/review_prison-2022_3.jpg')"></div>
+                </div>
+                <button class="carousel-btn prev" id="prevBtn">❮</button>
+                <button class="carousel-btn next" id="nextBtn">❯</button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </section>
+        <div class="detail-container">
+            <div class="detail-hero">
+                <p class="detail-meta">2022.08 | 活動回顧</p>
+                <h2>【活動回顧｜《獄惡同行》監獄主題營隊】</h2>
+            </div>
+            <div class="detail-content">【活動回顧｜《獄惡同行》監獄主題營隊】
+8/11-8/12期間，本社與民間司法改革基金會 Judicial Reform Foundation及監所關注小組 Prison Watch共同主辦為期兩天的監獄主題營隊。
+
+第一天
+早上邀請到廖福源社工為我們從的角度解析監護處分對精神疾病患者有哪些不足之處。
+下午進行，找出誰才是害死王男的兇手，並透過探索的過程了解監獄的環境與現行的體制，在結束後針對故事中出現的議題進行小組討論。
+晚上邀請到監所關注小組的陳惠敏理事長為我們詳細的介紹，及背後牽涉到的各種議題，還有關於如何取得監獄內資料的方式。
+
+第二天
+早上進行中正大學，了解毒品的歷史及危險性，並邀請到犯防所的許俊龍學長為我們講解毒品與法律間的關係。
+下午邀請到賴名昱先生透過與學員間的問答，讓大家了解監獄內實際的狀況與出獄後如何重新生活的心路歷程。
+營隊的最後則是以各組對「」的想像劃下兩天一夜營隊的句點。
+
+本次營隊為公共事務研習社第一次舉辦的營隊，收到許多學員正面的回饋，並敲碗下一屆，感謝各位學員的熱情支持。
+＿
+以下節錄幾位同學的回饋
+「謝謝你們舉辦這個活動 翻轉了我對監獄體制的看法 辛苦了🫶」
+
+「謝謝所有工作人員精心安排這場營隊，在這我學到很多知識，包括對監獄的看法有了更確切的看法，以及每場演講，小組討論，小遊戲還有超級好玩的RPG等等，都超級讚讚，這兩天真的很開心，辛苦你們了，明年還要再辦營隊歐！我一定要再參加」
+
+「這次的監獄營是我人生第一次參加的營隊，在2天的營期中，我學到許多，有我以前就有興趣的領域，也有初認識的事物
+這兩天我過得非常開心、充實，我會將這些美好精彩的回憶珍藏在心底💕謝謝你們排除萬難舉辦營隊，以及用心的規劃佈置，帶給我們許多東西和無法言喻的感動」
+
+「營隊的整體設計都超棒！物超所值，我也在這裡收穫了很多不同的知識和自身的省思！最後感謝你們舉辦這次活動😍😍」</div>
+            <a href="javascript:history.back()" class="back-btn">← 返回列表</a>
+        </div>
+    </main>
+    <script>
+        let currentSlide = 0; let autoPlayInterval;
+        const track = document.getElementById('carousel-track');
+        const dotsContainer = document.getElementById('carouselDots');
+        const slides = document.querySelectorAll('.slide');
+        function updateCarousel() {
+            if (!track) return;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+        }
+        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; updateCarousel(); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateCarousel(); }
+        function goToSlide(n) { currentSlide = n; updateCarousel(); startAutoPlay(); }
+        function startAutoPlay() { if (autoPlayInterval) clearInterval(autoPlayInterval); autoPlayInterval = setInterval(nextSlide, 5000); }
+        if (slides.length > 0) {
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === 0 ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            });
+            document.getElementById('nextBtn').onclick = () => { nextSlide(); startAutoPlay(); };
+            document.getElementById('prevBtn').onclick = () => { prevSlide(); startAutoPlay(); };
+            startAutoPlay();
+        }
+    </script>
+</body>
+</html>

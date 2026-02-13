@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活動資訊 | 公共事務研習社</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo-link">
+                <div class="logo-area">
+                    <img src="images/logo_gold.png" alt="PA-CLUB Logo" class="header-logo">
+                    <h1>公共事務研習社</h1>
+                </div>
+            </a>
+            <nav>
+                <a href="index.html">首頁</a>
+                <a href="events.html">活動資訊</a>
+                <a href="reviews.html">活動回顧</a>
+                <a href="calendar.html">活動行事曆</a>
+                <a href="index.html#about">關於我們</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="app">
+        <section class="carousel-section">
+            <div class="carousel-container">
+                <div id="carousel-track" class="carousel-track">
+                    <!-- 輪播圖片注入處 -->
+                </div>
+                <button class="carousel-btn prev" id="prevBtn">❮</button>
+                <button class="carousel-btn next" id="nextBtn">❯</button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h3>Events Information / 活動資訊</h3>
+            </div>
+            <div id="events-all-list" class="grid">
+                <!-- 這裡會顯示所有活動 -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>聯絡信箱：ccupa2020@gmail.com</p>
+                <p>社團主軸：公共事務 | 社會創新 | 議題思辨</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://www.facebook.com/CCUPublicAffairsClub" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/ccupac2019/" target="_blank">Instagram</a>
+                <a href="https://www.youtube.com/channel/UCpxbVoYa1C4POfOIr1_qgOQ" target="_blank">YouTube</a>
+                <a href="https://reurl.cc/ZN9ZvM" target="_blank">入社表單</a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2026 公共事務研習社 | 網頁架構：泰瑞 (Terry)</p>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        // 專屬頁面的渲染邏輯
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('events-all-list');
+            if (container && data.events) {
+                // 全方位卡片渲染器：強制包含圖片
+                const createCardHTML = (item) => {
+                    const tagStyle = item.tag === '報名中' ? '' : 'background: #999;';
+                    const detailLink = `activities/${item.slug}.html`;
+                    return `
+                        <div class="card event-card-unified">
+                            <div class="img-placeholder" style="background-image: url('${item.image || 'images/review_demo.jpg'}');"></div>
+                            <div class="card-text-content">
+                                <div class="card-meta-row">
+                                    <span class="date-tag">${item.date} | ${item.type}</span>
+                                    <span class="status-tag" style="${tagStyle}">${item.tag}</span>
+                                </div>
+                                <h4><a href="${detailLink}" class="title-link">${item.title}</a></h4>
+                                <p style="white-space: pre-wrap;">${item.desc}</p>
+                            </div>
+                            <a href="${detailLink}" class="btn-black">查看詳情 →</a>
+                        </div>
+                    `;
+                };
+                container.innerHTML = data.events.map(act => createCardHTML(act)).join('');
+            }
+        });
+    </script>
+</body>
+</html>

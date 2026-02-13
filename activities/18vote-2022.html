@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【活動回顧 | 1124 文化路街聊 • 嘉義大學生力挺 18 歲公民權】 | 公共事務研習社</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .detail-container { max-width: 900px; margin: 0 auto; padding: 4rem 20px; }
+        .detail-hero { border-left: 8px solid #000; padding-left: 2rem; margin-bottom: 3rem; }
+        .detail-meta { font-family: monospace; color: #888; margin-bottom: 1rem; }
+        .detail-content { font-size: 1.1rem; line-height: 1.8; color: #333; text-align: justify; white-space: pre-wrap; }
+        .back-btn { display: inline-block; margin-top: 4rem; padding: 10px 20px; border: 1px solid #000; text-decoration: none; color: #000; font-weight: bold; transition: all 0.3s; }
+        .back-btn:hover { transform: translate(-4px, -4px); box-shadow: 4px 4px 0px #333; background: #000; color: #fff; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo-link">
+                <div class="logo-area">
+                    <img src="../images/logo_gold.png" alt="PA-CLUB Logo" class="header-logo">
+                    <h1>公共事務研習社</h1>
+                </div>
+            </a>
+            <nav>
+                <a href="../index.html">首頁</a>
+                <a href="../events.html">活動資訊</a>
+                <a href="../reviews.html">活動回顧</a>
+                <a href="../calendar.html">活動行事曆</a>
+                <a href="../index.html#about">關於我們</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="carousel-section" class="carousel-section">
+            <div class="carousel-container">
+                <div id="carousel-track" class="carousel-track">
+                    <div class="slide" style="background-image: url('../images/review_18vote-2022_0.jpg')"></div>
+                    <div class="slide" style="background-image: url('../images/review_18vote-2022_1.jpg')"></div>
+                    <div class="slide" style="background-image: url('../images/review_18vote-2022_2.jpg')"></div>
+                    <div class="slide" style="background-image: url('../images/review_18vote-2022_3.jpg')"></div>
+                </div>
+                <button class="carousel-btn prev" id="prevBtn">❮</button>
+                <button class="carousel-btn next" id="nextBtn">❯</button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </section>
+        <div class="detail-container">
+            <div class="detail-hero">
+                <p class="detail-meta">2022.11 | 活動回顧</p>
+                <h2>【活動回顧 | 1124 文化路街聊 • 嘉義大學生力挺 18 歲公民權】</h2>
+            </div>
+            <div class="detail-content">【活動回顧 | 1124文化路街聊 • 嘉義大學生力挺18歲公民權】
+延續上周在校門口的街宣，我們趕在選舉日前夕，再度上街宣傳複決案。
+這回一改先前的宣傳形式，選擇以、沿著文化路商圈發送文宣的方式，期望能更直接的讓大眾聽見青年對於公民權的想法。
+這次共同參與行動的團體有Ccu議題關注小組、CCU公共事務研習社、南華大學學生會 NHUSA，以及多位來自中正、南華共同響應的同學。
+大多數同學都是第一次走上街頭，真誠地喊出一聲聲口號，遞出一份份文宣品。沿途收到的回饋讓我們深有感觸，也相信能藉由，讓不同世代相互理解，並展現出青年渴望參與政治的決心。
+一路上很幸運的收到來自不同民眾、候選人的喊話和支持，碰巧遇到掃街中的勇媽阿惠 - 黃敏惠市長時，也獲得她的聲援。
+
+距離選舉只剩下幾個小時，希望能夠喚起更多人認識18歲公民權複決案，並且願意投下同意票。也期待能透過我們的努力，讓越來越多人願意為支持的理念 and 議題付諸行動！
+ps. 特別感謝臺灣青年民主協會 TYAD提供的文宣品！</div>
+            <a href="javascript:history.back()" class="back-btn">← 返回列表</a>
+        </div>
+    </main>
+    <script>
+        let currentSlide = 0; let autoPlayInterval;
+        const track = document.getElementById('carousel-track');
+        const dotsContainer = document.getElementById('carouselDots');
+        const slides = document.querySelectorAll('.slide');
+        function updateCarousel() {
+            if (!track) return;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+        }
+        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; updateCarousel(); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateCarousel(); }
+        function goToSlide(n) { currentSlide = n; updateCarousel(); startAutoPlay(); }
+        function startAutoPlay() { if (autoPlayInterval) clearInterval(autoPlayInterval); autoPlayInterval = setInterval(nextSlide, 5000); }
+        if (slides.length > 0) {
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === 0 ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            });
+            document.getElementById('nextBtn').onclick = () => { nextSlide(); startAutoPlay(); };
+            document.getElementById('prevBtn').onclick = () => { prevSlide(); startAutoPlay(); };
+            startAutoPlay();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}} | 公共事務研習社</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .detail-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 20px;
+        }
+        .detail-hero {
+            border-left: 8px solid #000;
+            padding-left: 2rem;
+            margin-bottom: 3rem;
+        }
+        .detail-meta {
+            font-family: monospace;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+        .detail-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 4rem;
+            padding: 10px 20px;
+            border: 1px solid #000;
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .back-btn:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 4px 4px 0px #333;
+            background: #000;
+            color: #fff;
+        }
+        /* 修正輪播區塊在分頁的間距 */
+        .carousel-section {
+            margin-bottom: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo-link">
+                <div class="logo-area">
+                    <img src="../images/logo_gold.png" alt="PA-CLUB Logo" class="header-logo">
+                    <h1>公共事務研習社</h1>
+                </div>
+            </a>
+            <nav>
+                <a href="../index.html">首頁</a>
+                <a href="../events.html">活動資訊</a>
+                <a href="../reviews.html">活動回顧</a>
+                <a href="../calendar.html">活動行事曆</a>
+                <a href="../index.html#about">關於我們</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="detail-container">
+            <div class="detail-hero">
+                <p class="detail-meta">{{META}}</p>
+                <h2>{{TITLE}}</h2>
+            </div>
+            
+            <!-- 輪播區塊：使用與首頁完全一致的結構與類別 -->
+            <section class="carousel-section">
+                <div class="carousel-container">
+                    <div id="carousel-track" class="carousel-track">
+                        {{SLIDES}}
+                    </div>
+                    <button class="carousel-btn prev" id="prevBtn">❮</button>
+                    <button class="carousel-btn next" id="nextBtn">❯</button>
+                    <div class="carousel-dots" id="carouselDots"></div>
+                </div>
+            </section>
+            
+            <div class="detail-content">
+                {{CONTENT}}
+            </div>
+            
+            <a href="javascript:history.back()" class="back-btn">← 返回列表</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>聯絡信箱：ccupa2020@gmail.com</p>
+                <p>社團主軸：公共事務 | 社會創新 | 議題思辨</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://www.facebook.com/CCUPublicAffairsClub" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/ccupac2019/" target="_blank">Instagram</a>
+                <a href="https://www.youtube.com/channel/UCpxbVoYa1C4POfOIr1_qgOQ" target="_blank">YouTube</a>
+                <a href="https://reurl.cc/ZN9ZvM" target="_blank">入社表單</a>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2026 公共事務研習社 | 網頁架構：泰瑞 (Terry)</p>
+    </footer>
+
+    <script>
+        // 輪播邏輯：與首頁 main.js 邏輯保持同步
+        let currentSlide = 0;
+        let autoPlayInterval;
+        const track = document.getElementById('carousel-track');
+        const dotsContainer = document.getElementById('carouselDots');
+        const slides = document.querySelectorAll('.slide');
+
+        function updateCarousel() {
+            if (!track) return;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            updateCarousel();
+            startAutoPlay();
+        }
+
+        function startAutoPlay() {
+            if (autoPlayInterval) clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(nextSlide, 5000);
+        }
+
+        if (slides.length > 0) {
+            // 生成導航點
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === 0 ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            });
+
+            // 綁定按鈕
+            document.getElementById('nextBtn').onclick = () => {
+                nextSlide();
+                startAutoPlay();
+            };
+            document.getElementById('prevBtn').onclick = () => {
+                prevSlide();
+                startAutoPlay();
+            };
+
+            startAutoPlay();
+        }
+    </script>
+</body>
+</html>

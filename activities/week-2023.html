@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【活動回顧｜ 公研週─研傳身教】 | 公共事務研習社</title>
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .detail-container { max-width: 900px; margin: 0 auto; padding: 4rem 20px; }
+        .detail-hero { border-left: 8px solid #000; padding-left: 2rem; margin-bottom: 3rem; }
+        .detail-meta { font-family: monospace; color: #888; margin-bottom: 1rem; }
+        .detail-content { font-size: 1.1rem; line-height: 1.8; color: #333; text-align: justify; white-space: pre-wrap; }
+        .back-btn { display: inline-block; margin-top: 4rem; padding: 10px 20px; border: 1px solid #000; text-decoration: none; color: #000; font-weight: bold; transition: all 0.3s; }
+        .back-btn:hover { transform: translate(-4px, -4px); box-shadow: 4px 4px 0px #333; background: #000; color: #fff; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo-link">
+                <div class="logo-area">
+                    <img src="../images/logo_gold.png" alt="PA-CLUB Logo" class="header-logo">
+                    <h1>公共事務研習社</h1>
+                </div>
+            </a>
+            <nav>
+                <a href="../index.html">首頁</a>
+                <a href="../events.html">活動資訊</a>
+                <a href="../reviews.html">活動回顧</a>
+                <a href="../calendar.html">活動行事曆</a>
+                <a href="../index.html#about">關於我們</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="carousel-section" class="carousel-section">
+            <div class="carousel-container">
+                <div id="carousel-track" class="carousel-track">
+                    <div class="slide" style="background-image: url('../images/review_week-2023_0.jpg')"></div>
+                    <div class="slide" style="background-image: url('../images/review_week-2023_1.jpg')"></div>
+                    <div class="slide" style="background-image: url('../images/review_week-2023_2.jpg')"></div>
+                    <div class="slide" style="background-image: url('../images/review_week-2023_3.jpg')"></div>
+                </div>
+                <button class="carousel-btn prev" id="prevBtn">❮</button>
+                <button class="carousel-btn next" id="nextBtn">❯</button>
+                <div class="carousel-dots" id="carouselDots"></div>
+            </div>
+        </section>
+        <div class="detail-container">
+            <div class="detail-hero">
+                <p class="detail-meta">2023.06 | 活動回顧</p>
+                <h2>【活動回顧｜ 公研週─研傳身教】</h2>
+            </div>
+            <div class="detail-content">【活動回顧｜ 公研週─研傳身教】
+順利結束啦～
+希望公研社用心準備的公研週有幫助大家更認識我們，也更了解台灣有關教育的NGO團體，讓我們來回顧一下公研週的小片段吧！
+
+❐當我回到那一天
+時間推著我們不得不前進，大家是否曾經對人生中大大小小的選擇感到後悔不已呢？但時光無法倒流，人生不能重來，我們藉由自動回覆機器人，讓你能夠重新體驗過去的一切，提供給大家一個重新選擇的機會，若戰勝升學體制成功畢業，即可獲得我們頒發的畢業證書乙張！
+
+❐教育議題
+升學體制、家庭教育、心理假等等相關的議題，圍繞著我們本學期的社課內容。在社課過程中我們提供一個公共事務的討論平臺，讓大家能夠平等、自由地發表自己的想法，期待未來大家可以多多參與我們的社課，與我們一同進行討論及學習～在這次公研週的活動中，我們也與教育相關的NGO合作，共同宣傳教育理念，謝謝來參與活動的各位，最後也恭喜所有的得獎者！
+
+｜活動鳴謝｜
+人本教育基金會
+台灣放伴教育協會
+特別致謝以上單位提供精美文宣、刊物等，協助活動順利展出！</div>
+            <a href="javascript:history.back()" class="back-btn">← 返回列表</a>
+        </div>
+    </main>
+    <script>
+        let currentSlide = 0; let autoPlayInterval;
+        const track = document.getElementById('carousel-track');
+        const dotsContainer = document.getElementById('carouselDots');
+        const slides = document.querySelectorAll('.slide');
+        function updateCarousel() {
+            if (!track) return;
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+        }
+        function nextSlide() { currentSlide = (currentSlide + 1) % slides.length; updateCarousel(); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + slides.length) % slides.length; updateCarousel(); }
+        function goToSlide(n) { currentSlide = n; updateCarousel(); startAutoPlay(); }
+        function startAutoPlay() { if (autoPlayInterval) clearInterval(autoPlayInterval); autoPlayInterval = setInterval(nextSlide, 5000); }
+        if (slides.length > 0) {
+            slides.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === 0 ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            });
+            document.getElementById('nextBtn').onclick = () => { nextSlide(); startAutoPlay(); };
+            document.getElementById('prevBtn').onclick = () => { prevSlide(); startAutoPlay(); };
+            startAutoPlay();
+        }
+    </script>
+</body>
+</html>
